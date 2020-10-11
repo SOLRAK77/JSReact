@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaggedTemplate -- expresiones</title>
+</head>
+<body>
+    <h1>Diferentes uso en JS del TaggedTemplate</h1>
+</body>
+    <script>
+        const nombre = 'Carlos Alfredo'
+        console.log(`Mi nombre es: ${nombre}`)
+        console.log(`Mi edad es: ${43}`)
+        console.log(`Este es el ${'curso de JavaScript para React'}`)
+        console.log(`Mi nombre es ${x= 'Carlos Alfredo'}, comprueba con window.x para ver el valor de la variable`)
+        console.log(`Ejecutando un funcion ${(function equipoFutbol(){return 'Pachuca'})()}`)
+        console.log(`Ejecutando un Arrow funcion ${(()=> 'nfl pittsburgh')()}`)
+        console.log(`Ejecutando un ternario ${ 'Alfredo'?'Adriana':' ' }`)
+        console.log(`Ejecutando una expresion ${ ['aa','bb'].map((letra)=> `${letra}--styled`) }`)
+
+        
+    </script>
+</html>

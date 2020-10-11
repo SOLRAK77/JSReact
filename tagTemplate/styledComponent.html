@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emulando un styled component</title>
+</head>
+<body>
+    <h1>Emulando un styled Component</h1>
+    <div id='container'>
+
+    </div>
+</body>
+    <script>
+        const styled = {
+            // h1:function(styles){
+            //     return `<h1 style="${styles}">
+            //         Hola Mundo
+            //         </h1>`
+            // },
+            h1:function(styles){
+                return function(content){
+                        return `<h1 style="${styles}">
+                            ${content}
+                        </h1>`
+                    }
+            },
+            h2:'',
+            div:''
+        }
+
+        // function styled(string,tag){
+        //     function(string){
+        //         return function(tag){
+        //                 return `<${tag} style="${string}">
+        //                     ${content}
+        //                 </${tag}>`
+        //             }
+        //     }
+        // }
+
+        function component(strings,...dynamicValues){
+            return function (props){
+                console.log(strings)
+                let newContent = strings.slice()
+                console.log(newContent)
+                dynamicValues.forEach((value,index)=>{
+                    newContent[index] += props[value]
+                })
+                return newContent.join('')
+            }
+        }        
+
+        const TitleStyled = styled.h1`
+            font-family:system-ui;
+            color:orange;
+            font-zise:50px;
+            text-shadow:2px 2px 0 black;
+            line-height:50vh;
+            `
+
+        const props = {
+            message : 'No te rindas',
+            name : 'Carlos Alfredo'
+        }
+
+        // const title = component`--- ${'message'} --- ${'name'} --- `(props)
+        const title = component`<marquee>${'message'} - ${'name'}</marquee>`(props)
+
+        function render(component, container){
+            container.innerHTML = component
+        }
+
+        // render(TitleStyled('Hola Mundo!!!!'), window.container)
+        render(TitleStyled(title), window.container)
+    </script>
+</html>
